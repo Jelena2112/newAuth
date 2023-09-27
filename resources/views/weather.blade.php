@@ -1,6 +1,6 @@
-@foreach($prognoza as $city => $temp)
+@foreach($prognoza as $cityWeather)
 
-    <p>U {{ $city }} je danas {{ $temp }}.</p>
+    <p>U {{ $cityWeather->city->name }} je danas {{ $cityWeather->temperature}} stepeni.</p>
 
 @endforeach
 
