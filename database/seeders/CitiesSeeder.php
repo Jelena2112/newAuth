@@ -3,10 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CitiesModel;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Psy\VersionUpdater\Downloader\Factory;
 
 class CitiesSeeder extends Seeder
 {
