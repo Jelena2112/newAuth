@@ -12,6 +12,6 @@ class WeatherController extends Controller
             "Brisel" => 25,
             "Amsterdam" => 26
         ];
-        return view('weather',['prognoza' => $prognoza]);
+        return view('weather', ['prognoza' => $prognoza]);
     }
 }
