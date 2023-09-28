@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/prognoza', [WeatherController::class, 'index']);
 
-Route::get('/forecast/{city}', [ForecastController::class, 'index']);
+Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
