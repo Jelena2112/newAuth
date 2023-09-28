@@ -12,5 +12,10 @@ class CitiesModel extends Model
     protected $table = 'cities';
 
     protected $fillable = ['name'];
+
+    public function forecast()
+    {
+        return $this->hasMany(ForecastModel::class, 'id' , '');
+    }
 }
 
