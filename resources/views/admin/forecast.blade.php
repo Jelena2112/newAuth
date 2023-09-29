@@ -1,4 +1,4 @@
-<form method="POST" action="">
+<form method="POST" action="{{ route('admin.add.forecast') }}">
     {{ csrf_field() }}
 
     <input name="temperature" type="number" placeholder="Unesite temp.">
