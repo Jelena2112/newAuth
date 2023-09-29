@@ -7,7 +7,6 @@
 
         @foreach(\App\Models\CitiesModel::all() as $city)
             <option value="{{ $city->id }}">{{ $city->name }}</option>
-
         @endforeach
 
     </select>
@@ -19,6 +18,5 @@
             <span>{{ $loop->index + 1 }}.</span>
             {{ $weather->city->name }} - {{ $weather->temperature }} stepena
         </p>
-
     @endforeach
 </div>

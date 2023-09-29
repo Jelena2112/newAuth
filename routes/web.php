@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WeatherController;
@@ -25,6 +26,7 @@ Route::get('/prognoza', [WeatherController::class, 'index']);
 Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
 
 Route::view('/admin/weather','admin.weather');
+Route::post('/admin/weather/update' , [AdminController::class,'update'])->name('admin.weather.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
