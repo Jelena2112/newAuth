@@ -24,6 +24,8 @@ Route::get('/prognoza', [WeatherController::class, 'index']);
 
 Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
 
+Route::view('/admin/weather','admin.weather');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
