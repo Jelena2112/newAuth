@@ -1,5 +1,7 @@
 
-<form action="" method="POST">
+<form action="{{ route('admin.weather.update') }}" method="POST">
+
+    {{ csrf_field() }}
 
     <input name="temperature" type="text" placeholder="Unesite temp.">
 
