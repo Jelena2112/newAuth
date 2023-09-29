@@ -3,7 +3,7 @@
 
     {{ csrf_field() }}
 
-    <input name="temperature" type="text" placeholder="Unesite temp.">
+    <input name="temperature" type="number" placeholder="Unesite temp.">
 
     <select name="city_id">
 
