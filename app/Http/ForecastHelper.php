@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Models\ForecastModel;
+
 class ForecastHelper
 {
     public static function getColorByTemp($temperature)
@@ -26,5 +28,24 @@ class ForecastHelper
 
         return $color;
 
+    }
+
+    public static function getIconByWeather($weather)
+    {
+
+
+        if($weather == ForecastModel::WEATHER[0])
+        {
+            $icon = "fa-cloud-rain";
+        }
+        elseif ($weather == ForecastModel::WEATHER[2])
+        {
+            $icon = "fa-snowflake";
+        }
+        elseif ($weather == ForecastModel::WEATHER[1])
+        {
+            $icon = "fa-snowflake";
+        }
+        return $icon;
     }
 }
