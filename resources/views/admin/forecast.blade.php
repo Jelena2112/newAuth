@@ -24,7 +24,10 @@
     <p>{{ $city->name }}</p>
     <ul>
         @foreach($city->forecast as $forecast)
-            <li>{{ $forecast->forecast_date }} - {{ $forecast->temperature }}</li>
+            @php
+                $color = \App\Http\ForecastHelper::getColorByTemp($forecast->temperature);
+            @endphp
+            <li>Date: {{ $forecast->forecast_date }} - <span style="color : {{ $color }}"> Temperature: {{ $forecast->temperature }}</span> </li>
         @endforeach
     </ul>
 
