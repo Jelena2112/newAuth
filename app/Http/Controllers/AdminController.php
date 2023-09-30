@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForecastModel;
 use App\Models\WeatherModel;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,14 @@ class AdminController extends Controller
 
     public function AddForecast(Request $request)
     {
-        dd($request);
+       $request->validate([
+           'city_id' => 'required|exists:cities,id',
+           'temperature' => 'required',
+           'weather_type' => 'required',
+           'forecast_date' => 'required',
+       ]);
 
+       ForecastModel::create($request->all());
+        return redirect()->back();
     }
 }
