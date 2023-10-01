@@ -20,7 +20,7 @@ class ForcastsSeeder extends Seeder
         {
             for($i = 0;  $i < 5;  $i++)
             {
-                $weather = ForecastModel::WEATHER[rand(0,2)];
+                $weather = ForecastModel::WEATHER[rand(0,3)];
 
                 $probability = null;
 

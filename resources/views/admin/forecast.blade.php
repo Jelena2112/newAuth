@@ -47,7 +47,7 @@
                             $icon = \App\Http\ForecastHelper::getIconByWeather($forecast->weather_type);
                         @endphp
                         <li class="list-group-item">Date: {{ $forecast->forecast_date }} -
-                            <i class="fa-solid {{ $icon }}"></i>
+                            <i class="fas {{ $icon }}"></i>
                             <span style="color : {{ $color }}"> Temperature: {{ $forecast->temperature }}</span> </li>
                     @endforeach
                 </ul>

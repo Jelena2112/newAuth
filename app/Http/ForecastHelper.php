@@ -40,12 +40,18 @@ class ForecastHelper
         }
         elseif ($weather == ForecastModel::WEATHER[2])
         {
-            $icon = "fa-snowflake";
+            $icon = "fa-sun";
         }
         elseif ($weather == ForecastModel::WEATHER[1])
         {
             $icon = "fa-snowflake";
         }
+        elseif ($weather == ForecastModel::WEATHER[3])
+        {
+            $icon = "fas fa-cloud-sun";
+        }
         return $icon;
     }
 }
+
+
