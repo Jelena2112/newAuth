@@ -5,6 +5,7 @@ use App\Http\Controllers\ForecastController;
 use App\Http\Controllers\ForecastsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WeatherController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::view('/', 'welcome');
 
 Route::get('/prognoza', [WeatherController::class, 'index']);
 
-Route::prefix('/admin')->group(function (){
+Route::prefix('/admin')->middleware(AdminMiddleware::class)->group(function (){
     Route::view('/weather','admin.weather');
     Route::post('/weather/update' , [AdminController::class,'update'])->name('admin.weather.update');
     Route::view('/forecasts','admin.forecast');
