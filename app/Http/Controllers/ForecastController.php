@@ -12,4 +12,6 @@ class ForecastController extends Controller
   {
         return view('forecast', ['city' => $city]);
   }
+
+
 }

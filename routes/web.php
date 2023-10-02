@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForecastController;
+use App\Http\Controllers\ForecastsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
@@ -17,19 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::view('/', 'welcome');
 
 Route::get('/prognoza', [WeatherController::class, 'index']);
 
-Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
+
 
 Route::view('/admin/weather','admin.weather');
 Route::post('/admin/weather/update' , [AdminController::class,'update'])->name('admin.weather.update');
 Route::view('/admin/forecasts','admin.forecast');
 Route::post('/admin/forecasts/addForecast',[AdminController::class, 'AddForecast'])->name('admin.add.forecast');
 
+
+Route::get('/forecast/search', [ForecastsController::class, 'search'])->name('forecast.search');
+Route::post('/forecast/searchCity',[ForecastsController::class, 'search']);
+
+
+Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
 
 
 Route::get('/dashboard', function () {
