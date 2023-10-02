@@ -32,7 +32,7 @@ Route::post('/admin/forecasts/addForecast',[AdminController::class, 'AddForecast
 
 
 Route::get('/forecast/search', [ForecastsController::class, 'search'])->name('forecast.search');
-Route::post('/forecast/searchCity',[ForecastsController::class, 'search']);
+
 
 
 Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
