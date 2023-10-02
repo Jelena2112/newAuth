@@ -11,7 +11,7 @@ class ForecastsController extends Controller
     {
         $cityName = $request->city;
 
-        $city = CitiesModel::where("name", "LIKE" , "%$cityName%")->get();
+        $city = CitiesModel::with('todaysForecast')->where("name", "LIKE" , "%$cityName%")->get();
 
         if(count($city) == 0)
         {
