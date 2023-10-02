@@ -4,7 +4,9 @@
 
     @foreach($search as $city)
 
-        <p><a href="{{ route('forecast.any', ['city' => $city->name]) }}">{{ $city->name }}</a></p>
+        @php $icon = \App\Http\ForecastHelper::getIconByWeather($city->todaysForecast->weather_type) @endphp
+
+        <p><a href="{{ route('forecast.any', ['city' => $city->name]) }}"> <i class="fas {{ $icon }}"></i> {{ $city->name }}</a></p>
 
     @endforeach
 
