@@ -9,7 +9,7 @@
         <h3>Pretraga</h3>
 
         @if(\Illuminate\Support\Facades\Session::has('error'))
-            <p>{{ \Illuminate\Support\Facades\Session::get('error') }}</p>
+            <p class="text-danger">{{ \Illuminate\Support\Facades\Session::get('error') }}</p>
         @endif
 
         <div class="mb-3">

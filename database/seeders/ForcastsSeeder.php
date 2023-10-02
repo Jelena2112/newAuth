@@ -18,6 +18,8 @@ class ForcastsSeeder extends Seeder
 
         foreach ($allCities as $city)
         {
+            $lastTemp = null;
+
             for($i = 0;  $i < 5;  $i++)
             {
                 $weather = ForecastModel::WEATHER[rand(0,3)];
@@ -31,32 +33,42 @@ class ForcastsSeeder extends Seeder
 
                 $temperature = null;
 
-                switch ($weather)
+                if($lastTemp !== null)
                 {
-                    case ForecastModel::WEATHER[1]:
-                        $temperature = rand(-50, 40);
-                    break;
+                    $minTemp = $lastTemp -5;
+                    $maxtemp = $lastTemp +5;
+                    $temperature = rand($minTemp, $maxtemp);
+                }
+                else{
+                    switch ($weather)
+                    {
+                        case ForecastModel::WEATHER[1]:
+                            $temperature = rand(-50, 40);
+                            break;
 
-                    case ForecastModel::WEATHER[3]:
-                        $temperature = rand(-50 , 15);
-                        break;
+                        case ForecastModel::WEATHER[3]:
+                            $temperature = rand(-50 , 15);
+                            break;
 
-                    case ForecastModel::WEATHER[0]:
-                        $temperature = rand(-10, 40);
-                        break;
+                        case ForecastModel::WEATHER[0]:
+                            $temperature = rand(-10, 40);
+                            break;
 
-                    case ForecastModel::WEATHER[2]:
-                        $temperature = rand(-50, 1);
-                        break;
+                        case ForecastModel::WEATHER[2]:
+                            $temperature = rand(-50, 1);
+                            break;
+                    }
                 }
 
                 ForecastModel::create([
                     "city_id" => $city->id,
                     "temperature" => $temperature,
-                    'forecast_date' => Carbon::now()->addDays(rand(2,55)),
+                    'forecast_date' => Carbon::now()->addDays($i),
                     'weather_type' => $weather,
                     'probability' => $probability
                 ]);
+
+                $lastTemp = $temperature;
             }
         }
 
