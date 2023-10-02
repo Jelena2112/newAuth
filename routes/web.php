@@ -35,7 +35,7 @@ Route::get('/forecast/search', [ForecastsController::class, 'search'])->name('fo
 
 
 
-Route::get('/forecast/{city:name}', [ForecastController::class, 'index']);
+Route::get('/forecast/{city:name}', [ForecastController::class, 'index'])->name('forecast.any');
 
 
 Route::get('/dashboard', function () {

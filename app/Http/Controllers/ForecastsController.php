@@ -13,6 +13,11 @@ class ForecastsController extends Controller
 
         $city = CitiesModel::where("name", "LIKE" , "%$cityName%")->get();
 
+        if(count($city) == 0)
+        {
+            return redirect()->back()->with('error', 'Nemamo rezultate za vasu pretragu');
+        }
+
         return view('searchResults',["search" => $city]);
 
     }
