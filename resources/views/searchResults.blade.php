@@ -7,7 +7,11 @@
 
             @php $icon = \App\Http\ForecastHelper::getIconByWeather($city->todaysForecast->weather_type) @endphp
 
-            <p class="col-2 m-2"> <i class="fas fa-thumbs-up btn btn-primary"></i>
+            <p class="col-2 m-2">
+                <a class="btn btn-primary" href="{{ route('user.favourite', ['city'=> $city->id]) }}">
+                    <i class="fas fa-thumbs-up "></i>
+                </a>
+
                 <a class="btn-primary btn" href="{{ route('forecast.any', ['city' => $city->name]) }}">
                     <i class="fas {{ $icon }}"></i> {{ $city->name }}
                 </a>
@@ -15,7 +19,6 @@
 
         @endforeach
     </div>
-
 
 @endsection
 
