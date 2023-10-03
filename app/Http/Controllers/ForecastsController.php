@@ -19,8 +19,15 @@ class ForecastsController extends Controller
             return redirect()->back()->with('error', 'Nemamo rezultate za vasu pretragu');
         }
 
-        $userFavouriteCity = Auth::user()->userFavouriteCity;
-        $userFavouriteCity = $userFavouriteCity->pluck('city_id')->toArray();
+        $userFavouriteCity =[];
+
+        if(Auth::check())
+        {
+            $userFavouriteCity = Auth::user()->userFavouriteCity;
+            $userFavouriteCity = $userFavouriteCity->pluck('city_id')->toArray();
+        }
+
+
 //        dd($userFavouriteCity);
 
         return view('searchResults',["search" => $city, 'userCities' => $userFavouriteCity]);
