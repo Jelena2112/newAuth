@@ -34,7 +34,9 @@ class UserCitiesController extends Controller
             return redirect()->back()->with(["error" => "Ulogujte se za likovanje grada"]);
         }
 
-        UserCities::where(['city_id' => $city])->delete();
+        UserCities::where([
+            'city_id'=>$city,
+            'user_id'=>Auth::id()])->first()->delete();
 
         return redirect()->back();
     }
