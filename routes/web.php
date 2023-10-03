@@ -20,8 +20,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home', function (){
+    return view("helo");
+});
 
-Route::view('/', 'welcome');
+Route::get('/about', function (){
+    return view("about");
+});
+
+Route::get('/contact', function (){
+    return view("contact");
+});
+
+Route::get('/', function (){
+    $userLiked =[];
+    $user =  \Illuminate\Support\Facades\Auth::user();
+    if($user != null)
+    {
+        $userLiked = \App\Models\UserCities::where([
+            'user_id' => $user->id
+        ])->get();
+
+    }
+
+    return view("welcome", compact('userLiked'));
+});
+
 
 Route::get('/prognoza', [WeatherController::class, 'index']);
 

@@ -1,6 +1,10 @@
 @extends('layout')
 
 @section('content')
+    <h4>Trenutna temperatura za gradove koje ste lajkovali</h4>
+    @foreach($userLiked as $likedCity)
+        <p> {{ $likedCity->city->name }} : {{ $likedCity->city->todaysForecast->temperature }}</p>
+    @endforeach
 
     <form method="GET" action="{{ route('forecast.search') }}">
 
