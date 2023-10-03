@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CitiesModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ForecastsController extends Controller
 {
@@ -18,7 +19,11 @@ class ForecastsController extends Controller
             return redirect()->back()->with('error', 'Nemamo rezultate za vasu pretragu');
         }
 
-        return view('searchResults',["search" => $city]);
+        $userFavouriteCity = Auth::user()->userFavouriteCity;
+        $userFavouriteCity = $userFavouriteCity->pluck('city_id')->toArray();
+        dd($userFavouriteCity);
+
+        return view('searchResults',["search" => $city, 'userCities' => $userFavouriteCity]);
 
     }
 }
