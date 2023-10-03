@@ -3,7 +3,12 @@
 @section('content')
 
     <div class="mt-5 d-flex flex-wrap p-4">
-        @foreach($search as $city)
+        @if(\Illuminate\Support\Facades\Session::get('error'))
+            <p class="text-danger fw-bolder">{{ \Illuminate\Support\Facades\Session::get('error') }}</p>
+            <a class="btn btn-outline-primary " href="/login">Ulogujte se</a>
+        @endif
+
+    @foreach($search as $city)
 
             @php $icon = \App\Http\ForecastHelper::getIconByWeather($city->todaysForecast->weather_type) @endphp
 
