@@ -24,4 +24,18 @@ class UserCitiesController extends Controller
 
         return redirect()->back();
     }
+
+    public function unlike(Request $request, $city)
+    {
+        $user = Auth::user();
+
+        if($user === null)
+        {
+            return redirect()->back()->with(["error" => "Ulogujte se za likovanje grada"]);
+        }
+
+        UserCities::where(['city_id' => $city])->delete();
+
+        return redirect()->back();
+    }
 }

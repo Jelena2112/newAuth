@@ -15,7 +15,7 @@
             <p class="col-2 m-2">
 
                 @if(in_array($city->id, $userCities))
-                    <a class="btn btn-primary" href="{{ route('user.favourite', ['city'=> $city->id]) }}">
+                    <a class="btn btn-primary" href="{{ route('user.unlike', ['city'=> $city->id]) }}">
                         <i class="far fa-thumbs-up"></i>
                     </a>
                 @else

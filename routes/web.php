@@ -27,6 +27,7 @@ Route::get('/prognoza', [WeatherController::class, 'index']);
 
 
 Route::get('/userCities/favourite/{city}', [UserCitiesController::class, 'favourite'])->name('user.favourite');
+Route::get('/userCities/unfavourite/{city}',[UserCitiesController::class, 'unlike'])->name('user.unlike');
 
 Route::prefix('/admin')->middleware(AdminMiddleware::class)->group(function (){
     Route::view('/weather','admin.weather');
