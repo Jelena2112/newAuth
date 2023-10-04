@@ -12,7 +12,7 @@ class GetRealWeather extends Command
      *
      * @var string
      */
-    protected $signature = 'app:get-real-weather';
+    protected $signature = 'app:get-real-weather {city}';
 
     /**
      * The console command description.
@@ -27,16 +27,26 @@ class GetRealWeather extends Command
     public function handle()
     {
 //        $url = "https://reqres.in/api/users/2";
-        $response = Http::post("https://reqres.in/api/create", [
-            "name" => "ola",
-            "job" => "dev"
-        ]);
-        $response = $response->json();
+//        $response = Http::post("https://reqres.in/api/create", [
+//            "name" => "ola",
+//            "job" => "dev"
+//        ]);
+//        $response = $response->json();
 
 //        $response = $response->body();
 //
 //        $response = json_decode($jsonResponse, true);
 //
-        dd($response['name']);
+//        dd($response['name']);
+
+        $city = $this->argument("city");
+
+        $response = Http::get("https://api.weatherapi.com/v1/current.json" ,[
+            'key' => "303b134c174f46ed9ab200805230310",
+            'q' => $city,
+            'aqi' => "no"
+        ]);
+
+        dd($response->json());
     }
 }
