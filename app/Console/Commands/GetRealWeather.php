@@ -44,6 +44,12 @@ class GetRealWeather extends Command
 
         $jsonResponse = $response->json();
 
+        if($cityInDB->todaysForecast != null)
+        {
+            $this->output->comment('Comanda je gotova');
+            return;
+        }
+
         if(isset($jsonResponse['error']))
         {
             $this->output->error($jsonResponse['error']['message']);
@@ -58,6 +64,7 @@ class GetRealWeather extends Command
         ];
 
         ForecastModel::create($forecast);
+        $this->output->comment("Dodata je prognoza");
 
     }
 }
