@@ -47,6 +47,46 @@ class GetRealWeather extends Command
             'aqi' => "no"
         ]);
 
-        dd($response->json());
+        $jsonResponse = $response->json();
+
+        if(isset($jsonResponse['error']))
+        {
+            $this->output->error($jsonResponse['error']['message']);
+        }
+        dd($jsonResponse);
+
+
     }
 }
+
+
+
+
+
+
+    10 sajtova
+
+    itmentorstva.com
+    ns1.godaddy.com - ns1.plus.rs
+    ns2.godaddy.com - ns2.plus.rs
+
+    -> hosting: plus.rs
+
+    mysqli_connect("localhost", "test", "123456789")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
