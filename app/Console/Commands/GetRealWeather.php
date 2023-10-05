@@ -19,32 +19,21 @@ class GetRealWeather extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Weather Api for current weather';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-//        $url = "https://reqres.in/api/users/2";
-//        $response = Http::post("https://reqres.in/api/create", [
-//            "name" => "ola",
-//            "job" => "dev"
-//        ]);
-//        $response = $response->json();
-
-//        $response = $response->body();
-//
-//        $response = json_decode($jsonResponse, true);
-//
-//        dd($response['name']);
 
         $city = $this->argument("city");
 
-        $response = Http::get("https://api.weatherapi.com/v1/current.json" ,[
-            'key' => "303b134c174f46ed9ab200805230310",
+        $response = Http::get(env("WEATHER_API_URL")."v1/current.json" ,[
+            'key' => env("WEATHER_API_KEY"),
             'q' => $city,
-            'aqi' => "no"
+            'aqi' => "yes",
+            'lang'=> "en",
         ]);
 
         $jsonResponse = $response->json();
@@ -63,16 +52,6 @@ class GetRealWeather extends Command
 
 
 
-
-    10 sajtova
-
-    itmentorstva.com
-    ns1.godaddy.com - ns1.plus.rs
-    ns2.godaddy.com - ns2.plus.rs
-
-    -> hosting: plus.rs
-
-    mysqli_connect("localhost", "test", "123456789")
 
 
 
