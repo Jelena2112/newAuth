@@ -6,6 +6,13 @@ use App\Models\ForecastModel;
 
 class ForecastHelper
 {
+
+    const WEATHER_CONST = [
+        "rainy" => "fas-cloud-rain",
+        "snowy" => "fa-snowflake",
+        "sunny" => "fa-sun",
+        "cloudy" => "fa-cloud-sun",
+    ];
     public static function getColorByTemp($temperature)
     {
         $color = null;
@@ -32,25 +39,12 @@ class ForecastHelper
 
     public static function getIconByWeather($weather)
     {
+            if(in_array($weather, self::WEATHER_CONST))
+            {
+                return self::WEATHER_CONST[$weather];
+            }
+            return "fa-sun";
 
-
-        if($weather == ForecastModel::WEATHER[0])
-        {
-            $icon = "fa-cloud-rain";
-        }
-        elseif ($weather == ForecastModel::WEATHER[2])
-        {
-            $icon = "fa-sun";
-        }
-        elseif ($weather == ForecastModel::WEATHER[1])
-        {
-            $icon = "fa-snowflake";
-        }
-        elseif ($weather == ForecastModel::WEATHER[3])
-        {
-            $icon = "fas fa-cloud-sun";
-        }
-        return $icon;
     }
 }
 
