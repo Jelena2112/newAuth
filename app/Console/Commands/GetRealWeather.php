@@ -57,13 +57,14 @@ class GetRealWeather extends Command
 
         $forecast = [
             "city_id" => $cityInDB->id,
-            "forecast_date" => $jsonResponse['location']['localtime'],
+            "forecast_date" => $jsonResponse['current']['last_updated'],
             "temperature" =>$jsonResponse['current']['temp_c'],
             "weather_type" =>$jsonResponse['current']['condition']['text'],
             "probability" =>$jsonResponse['current']['cloud'],
         ];
 
         ForecastModel::create($forecast);
+
         $this->output->comment("Dodata je prognoza");
 
     }
