@@ -55,6 +55,7 @@ class GetRealWeather extends Command
             $this->output->error($jsonResponse['error']['message']);
         }
 
+        $forecastDay = $jsonResponse['current'];
         $forecast = [
             "city_id" => $cityInDB->id,
             "forecast_date" => $jsonResponse['current']['last_updated'],
