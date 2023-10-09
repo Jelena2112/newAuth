@@ -58,10 +58,10 @@ class GetRealWeather extends Command
         $forecastDay = $jsonResponse['current'];
         $forecast = [
             "city_id" => $cityInDB->id,
-            "forecast_date" => $jsonResponse['current']['last_updated'],
-            "temperature" =>$jsonResponse['current']['temp_c'],
-            "weather_type" =>$jsonResponse['current']['condition']['text'],
-            "probability" =>$jsonResponse['current']['cloud'],
+            "forecast_date" => $forecastDay['last_updated'],
+            "temperature" =>$forecastDay['temp_c'],
+            "weather_type" =>$forecastDay['condition']['text'],
+            "probability" =>$forecastDay['cloud'],
         ];
 
         ForecastModel::create($forecast);
